@@ -37,9 +37,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        var mergedList : ListNode?
+        var leftNode = l1
+        var previousLeftNode = nil
+        var rightValue = l2.val
         
-        return mergedList
+        
+        while(leftNode != nil) {
+            if previousLeftNode == nil {
+                previousLeftNode = leftNode
+                leftNode = leftNode.next
+                return
+            }
+            
+            if rightValue >= previousLeftNode.val && rightValue <= leftNode.val {
+                let tempNode = leftNode
+                previousLeftNode.next =
+            }
+        }
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
