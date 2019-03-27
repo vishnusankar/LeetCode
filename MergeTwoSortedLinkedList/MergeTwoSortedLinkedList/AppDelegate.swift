@@ -23,38 +23,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let list1 = ListNode(value: 1)
+        let list1 = ListNode(value: 2)
         let list2 = ListNode(value: 1)
         
-        list1.next = ListNode(value: 2)
-        list1.next?.next = ListNode(value: 4)
+//        list1.next = ListNode(value: 2)
+//        list1.next?.next = ListNode(value: 4)
         
-        list2.next = ListNode(value: 3)
-        list2.next?.next = ListNode(value: 4)
+//        list2.next = ListNode(value: 3)
+//        list2.next?.next = ListNode(value: 4)
         
         print(mergeTwoLists(list1, list2))
         return true
     }
     
+//    Input: 1->2->4, 1->3->4
+//    Output: 1->1->2->3->4->4
+    
     func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         var leftNode = l1
-        var previousLeftNode = nil
-        var rightValue = l2.val
+        var headNode = l1
+        var previousLeftNode : ListNode? = nil
+        var rightNode = l2
         
+        if leftNode == nil && rightNode != nil {
+            return rightNode
+        }
+        else if leftNode != nil && rightNode == nil {
+            return leftNode
+        }
         
         while(leftNode != nil) {
             if previousLeftNode == nil {
                 previousLeftNode = leftNode
-                leftNode = leftNode.next
-                return
+                if leftNode?.next == nil {
+                    if (leftNode?.val)! > (rightNode?.val)! {
+                         rightNode?.next = leftNode
+                    }else {
+                        leftNode?.next = rightNode
+                    }
+                    
+                    return headNode
+                }else {
+                    leftNode = leftNode?.next
+                }
+            }
+            else if rightNode == nil {
+                return headNode
+            }
+            else if (rightNode?.val)! >= (previousLeftNode?.val)! && (rightNode?.val)! <= (leftNode?.val)! {
+                previousLeftNode?.next = rightNode
+                rightNode = rightNode?.next
+                previousLeftNode?.next?.next = leftNode
+               
+                previousLeftNode = previousLeftNode?.next
+//                leftNode = leftNode?.next
+            }
+            else {
+                previousLeftNode = previousLeftNode?.next
+                leftNode = leftNode?.next
             }
             
-            if rightValue >= previousLeftNode.val && rightValue <= leftNode.val {
-                let tempNode = leftNode
-                previousLeftNode.next =
-            }
+            print("previousleftNode - \(previousLeftNode?.val), leftNode - \(leftNode?.val)")
         }
-
+        return headNode
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
