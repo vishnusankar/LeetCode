@@ -53,34 +53,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         while(leftNode != nil) {
-            if previousLeftNode == nil {
-                previousLeftNode = leftNode
-                if leftNode?.next == nil {
-                    if (leftNode?.val)! > (rightNode?.val)! {
-                         rightNode?.next = leftNode
-                    }else {
-                        leftNode?.next = rightNode
-                    }
-                    
-                    return headNode
-                }else {
-                    leftNode = leftNode?.next
-                }
-            }
-            else if rightNode == nil {
+            if rightNode == nil {
                 return headNode
             }
-            else if (rightNode?.val)! >= (previousLeftNode?.val)! && (rightNode?.val)! <= (leftNode?.val)! {
-                previousLeftNode?.next = rightNode
-                rightNode = rightNode?.next
-                previousLeftNode?.next?.next = leftNode
-               
-                previousLeftNode = previousLeftNode?.next
-//                leftNode = leftNode?.next
-            }
-            else {
-                previousLeftNode = previousLeftNode?.next
-                leftNode = leftNode?.next
+            if let tempLeftNode = leftNode, let tempRightNode = rightNode {
+                if tempLeftNode.val > tempRightNode.val {
+                    let tempNode = rightNode?.next
+                    rightNode?.next = leftNode
+                    rightNode = tempNode
+                }else {
+                    let tempNode = leftNode?.next
+                    leftNode?.next = rightNode
+                    leftNode = leftNode?.next
+                }
             }
             
             print("previousleftNode - \(previousLeftNode?.val), leftNode - \(leftNode?.val)")
