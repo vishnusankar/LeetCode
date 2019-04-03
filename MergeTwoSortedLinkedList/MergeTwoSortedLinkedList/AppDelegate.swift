@@ -28,9 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        list1.next = ListNode(value: 2)
 //        list1.next?.next = ListNode(value: 4)
+//        list1.next?.next?.next = ListNode(value: 8)
         
-//        list2.next = ListNode(value: 3)
-//        list2.next?.next = ListNode(value: 4)
+//        list2.next = ListNode(value: 6)
+//        list2.next?.next = ListNode(value: 6)
+        
         
         print(mergeTwoLists(list1, list2))
         return true
@@ -53,17 +55,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         while(leftNode != nil) {
-            if rightNode == nil {
-                return headNode
-            }
             if let tempLeftNode = leftNode, let tempRightNode = rightNode {
                 if tempLeftNode.val > tempRightNode.val {
-                    let tempNode = rightNode?.next
-                    rightNode?.next = leftNode
-                    rightNode = tempNode
-                }else {
+                    let tempNode = previousLeftNode?.next
+                    previousLeftNode?.next = rightNode
+                    rightNode = rightNode?.next
+                    leftNode = previousLeftNode?.next
+                    leftNode?.next = tempNode
+                }
+                else if tempLeftNode.val == tempRightNode.val {
                     let tempNode = leftNode?.next
                     leftNode?.next = rightNode
+                    rightNode = rightNode?.next
+                    previousLeftNode = leftNode
+                    leftNode = leftNode?.next
+                    leftNode?.next = tempNode
+                }
+                else if tempLeftNode.val < tempRightNode.val {
+                    previousLeftNode = leftNode
                     leftNode = leftNode?.next
                 }
             }
