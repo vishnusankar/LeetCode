@@ -23,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let list1 = ListNode(value: 2)
-        let list2 = ListNode(value: 1)
+        let list1 = ListNode(value: 1)
+        let list2 = ListNode(value: 4)
         
-//        list1.next = ListNode(value: 2)
-//        list1.next?.next = ListNode(value: 4)
+        list1.next = ListNode(value: 2)
+        list2.next = ListNode(value: 5)
         
-//        list2.next = ListNode(value: 3)
-//        list2.next?.next = ListNode(value: 4)
+        list1.next?.next = ListNode(value: 3)
+//        list2.next?.next = ListNode(value: 5)
         
         print(mergeTwoLists(list1, list2))
         return true
@@ -54,23 +54,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         while(leftNode != nil) {
             if rightNode == nil {
-                return headNode
+                return leftNode
             }
             if let tempLeftNode = leftNode, let tempRightNode = rightNode {
                 if tempLeftNode.val > tempRightNode.val {
-                    let tempNode = rightNode?.next
+                    let tempPointer = rightNode?.next
                     rightNode?.next = leftNode
-                    rightNode = tempNode
+                    leftNode = rightNode
+                    rightNode = tempPointer
                 }else {
-                    let tempNode = leftNode?.next
+                    let tempPointer = leftNode?.next
                     leftNode?.next = rightNode
-                    leftNode = leftNode?.next
+                    rightNode = rightNode?.next
+                    rightNode?.next = tempPointer
                 }
             }
             
             print("previousleftNode - \(previousLeftNode?.val), leftNode - \(leftNode?.val)")
         }
-        return headNode
+        return leftNode
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
