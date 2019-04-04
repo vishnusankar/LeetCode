@@ -30,38 +30,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //find substring without repeated characters
         //If new substring's length is greater than previous substring then replace old substring with new substring
         let s = "dvdf"
-        self.lenghtOfLongestSubstringTwo(s)
+        
+        self.lengthOfLongestSubstringThree(s)
         return true
     }
 
     func lenghtOfLongestSubstringTwo(_ s:String) -> Int {
-        //while loop unitl startindex reach end
-        //endindex should move towards right until it finds any duplicate character
-        //return substring's range and if previous range is smaller than current range then update the current range
-        //and move the startindex to next character
-        //After startindex reach end return the current range count as result
+        //while loop unitl startindex reach endindex
+        //Make substring from Startindex to endindex
+        //Get next character of endindex and check this character is found on substring which we make it on previous step.
+            //Founded duplicate character case
+                //Check lastFoundSubString count is greater than current startindex to endindex count
+                    //Store this startindex and endindex as lastFoundSubString
+                //Move the startindex to the next index of founded character in substring
+            //Character not found
+                //Move the endindex to next character
         
-        var startIndex : String.Index = s.startIndex
+        
+        var startIndex : String.Index = s.utf8.startIndex
         var endIndex : String.Index = s.index(startIndex,offsetBy: 1)
-        var subStringRange : [Range<String.Index>] = [Range<String.Index>]()
-        var subStringCount : [Int] = [Int]()
-        subst
+        var lastFoundSubString : [Range<String.Index>] = [Range<String.Index>]()
+//        var subStringCount : [Int] = [Int]()
+        
         while startIndex != s.endIndex {
-            print("startIndex - \(s.lastIndex(of: "f")) endIndex - \(endIndex)")
             
             let str = s[startIndex..<endIndex]
             endIndex = s.index(endIndex, offsetBy: 1)
             let nextChar = s[endIndex]
             
+            //Founded duplicate character case
             if str.contains(nextChar) {
-                subStringRange.append((startIndex..<endIndex))
-                subStringCount.append((startIndex..<endIndex).count)
-            }else {
+                if lastFoundSubString.count > 0 {
+                    if let tempPreviousSubStringRange = lastFoundSubString.last {
+//                        if (tempPreviousSubStringRange.count < (startIndex..<endIndex).count) {
+                        
+//                        }
+                    }
+                }
+                else {
+                    
+                }
+            }
+            //Character not found
+            else {
                 
             }
         }
         
         return 0
+    }
+    
+    func lengthOfLongestSubstringThree(_ s: String) -> Int {
+        
+        var characterDict = [Character:Int]()
+        var maxLength = 0
+        var lastRepeatPos = -1
+        var i = 0
+        
+        for c in s {
+            if (characterDict[c] != nil) && (characterDict[c]! > lastRepeatPos) {
+                lastRepeatPos = characterDict[c]!
+            }
+            
+            maxLength = max(i - lastRepeatPos, maxLength)
+            characterDict[c] = i
+            i += 1
+        }
+        
+        return maxLength
     }
     
     func lengthOfLongestSubstring(_ s: String) -> Int {
