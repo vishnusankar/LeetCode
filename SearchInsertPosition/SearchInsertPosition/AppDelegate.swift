@@ -16,8 +16,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        print("\(self.searchInsert([1,3,5,6], 2))")
         return true
+    }
+    
+    func searchInsert(_ nums:[Int], _ target: Int) -> Int {
+//        Steps :-
+//        1. While isIndexFound != true
+//            1. If input value is greater than array count
+//                1. Access the last index value and check with input value
+//                    1. If input value is greater than last index value
+//                        1. Return array count
+//                    2. If input value is lesser than last index value
+//                        1. Move the currentIndex to last to previous index
+//                        2. Redo the all task from before
+//                    3. If input value is equal to last index value
+//                        1. Return last index
+//            2. If input value is lesser than array count
+//                1. Go to the index of input value - 1 and fetch the value of the index.
+//                    1. If input value is greater than current value
+//                        1. Move the currentIndex to next index
+//                        2. Redo the all task from before
+//                    2. If input value is lesser than current value
+//                        1. Move the currentIndex to previous index
+//                        2. Redo the all task from before
+//                    3. If input value is equal to current value
+//                        1. Return current Index
+        
+        var isIndexFound = false
+        var currentIndex : Int = nums.count - 1
+        
+        while  isIndexFound != true || (currentIndex < nums.count && currentIndex >= 0) {
+            if target > nums.count {
+                let lastValue = nums[currentIndex]
+                    if target > lastValue {
+                        isIndexFound = true
+                        return nums.count
+                    }
+                    else if target < lastValue {
+                        let tempIsIndexFound = false
+                        while tempIsIndexFound != true {
+                            if nums
+                            currentIndex -= 1
+                        }
+                        
+                        
+                    }
+                    else if target == lastValue {
+                        isIndexFound = true
+                        return currentIndex
+                    }
+                
+            }
+            else if target < nums.count {
+                if  target > nums[target] {
+                    currentIndex += 1
+                    if currentIndex >= nums.count {
+                        isIndexFound = true
+                        return nums.count
+                    }
+                }
+                else if target < nums[target] {
+                    currentIndex -= 1
+                    if currentIndex < 0 {
+                        isIndexFound = true
+                        currentIndex = 0
+                        return currentIndex
+                    }
+                }
+                else {
+                    return currentIndex
+                }
+            }
+        }
+        
+        return currentIndex
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

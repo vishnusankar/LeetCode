@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IntersectionOfTwoArrays/AppDelegate.swift"
+            timestampString = "577869090.8466229"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "binarySearchRecursive(startIndex:endIndex:array:targetValue:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntersectionOfTwoArrays.AppDelegate.(binarySearchRecursive in _93F6ACAAC7604B30D6FF1C942FE75CDE)(startIndex: Swift.Int, endIndex: Swift.Int, array: inout Swift.Array&lt;Swift.Int&gt;, targetValue: Swift.Int) -&gt; Swift.Bool"
+                  moduleName = "IntersectionOfTwoArrays"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnusankar/Documents/Tried%20Examples/LeetCode/LeetCode/IntersectionOfTwoArrays/IntersectionOfTwoArrays/AppDelegate.swift"
+                  timestampString = "577868212.5805809"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "199">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntersectionOfTwoArrays.AppDelegate.(binarySearchRecursive in _93F6ACAAC7604B30D6FF1C942FE75CDE)(startIndex: Swift.Int, endIndex: Swift.Int, array: inout Swift.Array&lt;Swift.Int&gt;, targetValue: Swift.Int) -&gt; Swift.Bool"
+                  moduleName = "IntersectionOfTwoArrays"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vishnusankar/Documents/Tried%20Examples/LeetCode/LeetCode/IntersectionOfTwoArrays/IntersectionOfTwoArrays/AppDelegate.swift"
+                  timestampString = "577868212.5844719"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "250">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IntersectionOfTwoArrays/AppDelegate.swift"
+            timestampString = "577869090.8471349"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "intersectionOfTwoArrays(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
